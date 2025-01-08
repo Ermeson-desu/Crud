@@ -7,7 +7,7 @@ namespace SqlServerC
 
     public class Conn
     {
-        private const string server = "melodiccaConections";
+        private const string server = "localhost";
         private const string database = "db_crud";
         private const string user = "root";
         private const string senha = "1234";
