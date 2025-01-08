@@ -1,0 +1,26 @@
+﻿<Window x:Class="aula1_oláMundo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:aula1_oláMundo"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesign.Brush.Foreground}"
+        Background="{DynamicResource MaterialDesign.Brush.Background}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="{materialDesign:MaterialDesignFont}"
+        Title="Cadastros Melodicca" MinHeight="400" MinWidth="500">
+    <StackPanel VerticalAlignment="Center" Width="446">
+        <TextBlock Margin="10,10,380,0" Width="42">Nome:</TextBlock>
+        <TextBox x:Name="txtbox_nome" Margin="10,0,0,0" Width="450" Height="40" UndoLimit="44"></TextBox>
+        <TextBlock Margin="10,10,380,0" Width="42">E-mail: </TextBlock>
+        <TextBox x:Name="txtbox_email" Margin="10,0,0,0" Width="450" Height="40" UndoLimit="44"/>
+        <TextBlock Margin="10,10,380,0" Width="42">CPF: </TextBlock>
+        <TextBox x:Name="txtbox_cpf" Margin="10,0,0,0" Width="450" Height="40" UndoLimit="16"></TextBox>
+        <TextBlock Margin="10,10,380,0" Width="83" TextWrapping="WrapWithOverflow" HorizontalAlignment="Left">Endereço: </TextBlock>
+        <TextBox x:Name="txtbox_endereco" Margin="10,0,0,0" Width="450" Height="40" UndoLimit="133"></TextBox>
+        <Button x:Name="butom_enviar" Width="80" Click="butom_enviar_Click"> Enviar</Button>
+    </StackPanel>
+</Window>
