@@ -53,12 +53,12 @@ namespace aula1_oláMundo
                 MySqlConnection mySqlConnetion = new MySqlConnection(Conn.bancoServidor);
                 mySqlConnetion.Open();
                  
-                //string insert = $"INSERT INTO tb_cliente(cliente_nome,cliente_email, cliente_cpf,cliente_endereco) " +
-                //                $"VALUE('{Nome}','{Email}',{CPF} ,'{Endereco}')";
+                string insert = $"INSERT INTO tb_cliente(cliente_nome,cliente_email, cliente_cpf,cliente_endereco) " +
+                                $"VALUE('{Nome}','{Email}',{CPF} ,'{Endereco}')";
 
-                //MySqlCommand comandoSql = new MySqlCommand();
-                //comandoSql.CommandText = insert;
-                //comandoSql.ExecuteNonQuery();
+                MySqlCommand comandoSql = new MySqlCommand();
+                comandoSql.CommandText = insert;
+                comandoSql.ExecuteNonQuery();
 
                 return true;
             }
