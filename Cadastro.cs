@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows;
 using MySql.Data.MySqlClient;
 using SqlServerC;
@@ -6,7 +6,7 @@ using SqlServerC;
 
 namespace aula1_oláMundo
 {
-    internal class Cadastro
+     class Cadastro
     {
         private int id;
         private string nome = "";
@@ -44,25 +44,36 @@ namespace aula1_oláMundo
             set { endereco = value; }
         }
 
+
+        // Retorna uma conexão com o banco de dados MySQL
+        public MySqlConnection GetConnection()
+        {
+            return new MySqlConnection(Conn.bancoServidor);
+        }
+
         // Cadastro de funcionários no banco de dados
         public bool Cadastrar_funcionarios()
         {
+            
             try
             {
                 //manda os comandos direto com o banco de dados
-                MySqlConnection mySqlConnetion = new MySqlConnection(Conn.bancoServidor);
-                mySqlConnetion.Open();
-                 
-                string insert = $"INSERT INTO tb_cliente(cliente_nome,cliente_email, cliente_cpf,cliente_endereco) " +
-                                $"VALUE('{Nome}','{Email}',{CPF} ,'{Endereco}')";
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
 
-                MySqlCommand comandoSql = new MySqlCommand();
-                comandoSql.CommandText = insert;
-                comandoSql.ExecuteNonQuery();
+                    //insert é o comando do database em Sql para inserir os valores na tabela
+                    string insert = $"INSERT INTO tb_cliente(cliente_nome,cliente_email, cliente_cpf,cliente_endereco) " +
+                                    $"VALUE('{Nome}','{Email}','{CPF}' ,'{Endereco}');";
 
-                return true;
+                    MySqlCommand comandoSql = new MySqlCommand(insert,connection);
+                    comandoSql.CommandText = insert;
+                    comandoSql.ExecuteNonQuery();
+
+                    return true;
+                }
             }
-            catch(Exception erro)
+            catch (MySqlException erro)
             {
                 //Mensagem de erro quando não conseguir cadastrar os funcionários
                 //Erro ligado ao banco de dados
